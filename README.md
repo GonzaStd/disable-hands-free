@@ -8,14 +8,17 @@ Este proyecto automatiza la **desactivación del perfil "Hands-Free" de los auri
 
 Los auriculares Bluetooth modernos como los QCY H3 pueden tener múltiples perfiles de audio:
 - **Stereo (A2DP)**: Perfil de alta calidad para escuchar música
-- **Hands-Free (HFP)**: Perfil de baja calidad para llamadas telefónicas
+- **Hands-Free (HFP)**: Perfil para llamadas telefónicas con micrófono
 
-Cuando Windows detecta el perfil Hands-Free, a veces lo establece como predeterminado automáticamente, lo que resulta en:
-- ❌ **Calidad de audio muy inferior** (sonido mono, comprimido)
-- ❌ **Pérdida de la experiencia de audio estéreo**
+**El problema principal ocurre con Discord y otras aplicaciones de comunicación**: cuando el perfil Hands-Free está activo, Discord y aplicaciones similares pueden experimentar:
+- ❌ **Problemas de conexión y comunicación** en llamadas de voz
+- ❌ **Conflictos entre dispositivos de entrada/salida** 
+- ❌ **Comportamiento inestable** del micrófono y audio
 - ❌ **Necesidad de desactivarlo manualmente** cada vez que se conectan los auriculares
 
-**Este proyecto soluciona este problema automáticamente**, garantizando que siempre uses el perfil de alta calidad sin intervención manual.
+En mi caso específico, el perfil Hands-Free generaba problemas constantes al utilizar Discord, interrumpiendo las comunicaciones de voz.
+
+**Este proyecto soluciona este problema automáticamente**, desactivando el perfil problemático sin intervención manual.
 
 ## 🔧 ¿Cómo funciona la automatización?
 
@@ -158,11 +161,16 @@ $connectedDevice = Get-PnpDevice | Where-Object {
 
 ### Para recompilar después de cambios
 
-```powershell
-# Eliminar el ejecutable antiguo
-Remove-Item "Disable Hands-Free.exe"
+Después de modificar `src/disable.ps1`, debes recompilar el ejecutable:
 
-# Ejecutar setup.bat de nuevo como Administrador
+```powershell
+# Opción 1: Eliminar el ejecutable y ejecutar setup.bat como Administrador
+Remove-Item "Disable Hands-Free.exe"
+# Luego hacer clic derecho en setup.bat > Ejecutar como Administrador
+
+# Opción 2: Recompilar manualmente
+cd src
+.\compile.ps1
 ```
 
 ## 🛠️ Solución de problemas
