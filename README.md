@@ -212,10 +212,6 @@ Las contribuciones son bienvenidas. Por favor:
 
 Este proyecto es de código abierto y está disponible para uso personal y educativo.
 
-## ⚠️ Advertencia
-
-Este proyecto requiere privilegios de administrador y modifica configuraciones del sistema. Usar bajo tu propia responsabilidad. Se recomienda entender el código antes de ejecutarlo.
-
 ---
 
 **Desarrollado para QCY H3, pero adaptable a cualquier dispositivo Bluetooth con perfil Hands-Free problemático.**
