@@ -142,10 +142,15 @@ No se requiere ninguna acción manual después de la instalación.
 
 ### Para usar con otros modelos de auriculares
 
-Edita el archivo `src/disable.ps1` y modifica la línea 12:
+Edita el archivo `src/disable.ps1` y modifica la línea 12, reemplazando "QCY H3" por el nombre de tus auriculares:
 
 ```powershell
-# Cambiar "QCY H3" por el nombre de tus auriculares
+# Ejemplo: cambiar de esto (código actual):
+$connectedDevice = Get-PnpDevice | Where-Object { 
+    $_.FriendlyName -like "*QCY H3*" -and $_.FriendlyName -like "*Hands-Free*" 
+}
+
+# A esto (reemplaza "TU_MODELO" con el nombre real):
 $connectedDevice = Get-PnpDevice | Where-Object { 
     $_.FriendlyName -like "*TU_MODELO*" -and $_.FriendlyName -like "*Hands-Free*" 
 }
@@ -153,9 +158,9 @@ $connectedDevice = Get-PnpDevice | Where-Object {
 
 ### Para recompilar después de cambios
 
-```bash
+```powershell
 # Eliminar el ejecutable antiguo
-del "Disable Hands-Free.exe"
+Remove-Item "Disable Hands-Free.exe"
 
 # Ejecutar setup.bat de nuevo como Administrador
 ```
