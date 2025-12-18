@@ -145,7 +145,7 @@ No se requiere ninguna acción manual después de la instalación.
 
 ### Para usar con otros modelos de auriculares
 
-Edita el archivo `src/disable.ps1` y modifica la línea 12, reemplazando "QCY H3" por el nombre de tus auriculares:
+Edita el archivo `src/disable.ps1` y busca la sección que filtra por "QCY H3", reemplazándolo por el nombre de tus auriculares:
 
 ```powershell
 # Ejemplo: cambiar de esto (código actual):
@@ -165,7 +165,7 @@ Después de modificar `src/disable.ps1`, debes recompilar el ejecutable:
 
 ```powershell
 # Opción 1: Eliminar el ejecutable y ejecutar setup.bat como Administrador
-Remove-Item "Disable Hands-Free.exe"
+Remove-Item "Disable Hands-Free.exe" -ErrorAction SilentlyContinue
 # Luego hacer clic derecho en setup.bat > Ejecutar como Administrador
 
 # Opción 2: Recompilar manualmente
